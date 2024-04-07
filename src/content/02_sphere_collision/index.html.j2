@@ -1,0 +1,66 @@
+{% set pageTitle = 'Simulation - Spheres in Collision' %}
+{% set tocTitle = '2- Spheres in Collision' %}
+
+{% extends "theme/template/base.html" %}
+
+
+
+{% block content %}
+
+
+= Simulation - Spheres in Collision
+
+::[color:gray;]
+__Path of the code: [08_sphere_collision]__
+::
+
+::[height:1em;]::
+
+This scene models a set of particles representing spheres falling under gravity.
+Each particle is associated to the following parameters: position \(p\), speed \(v\), forces \(f\), as well as radius and color. 
+
+::[height:1em;]::
+
+The position and speed of each particle is updated through time using a discrete integration in the file `simulation/simulation.cpp`
+
+* - \(v^{k+1} = v^{k} + \Delta t\;f^{k}\)
+
+* - \(p^{k+1} = p^{k} + \Delta t\;v^{k+1}\)
+
+::[height:2em;]::
+
+In the current state of the program, only the gravity is taken into account. But the collision with the cube boundaries and between the sphere need to be implemented.
+
+== Collisions
+
+Add the collision detection and response between the spheres and boundary faces of the cube using impulse based response on the sphere velocities.
+
+::[height:2em;]::
+
+The collision response can be implemented in two steps:
+
+* - First applying impulse response to generate the bouncing (with the cube, and other particles)
+* - Second canceling the velocity components that still generate a penetration (with the cube, and other particles)
+
+Once the velocity is computed, then the sphere positions are finally updated
+
+
+::[text-align:center;]
+videoplay::assets/spheres_collision.mp4[width:100%; max-width:500px]
+::
+
+::[height:2em;]::
+
+Note: You may perform several iterations of the numerical integration at each frame in order to speed up the simulation, while keeping a constant (or smaller) time step.
+
+== Possible extension
+
+* Allow the user to move the box interactively. (In this case, the particles that goes out of the cube will need to get their position projected back inside the cube.)
+
+* Speed-up the collision detection in building a spatial acceleration structure such as a regular grid storing neighboring particles.
+
+::[text-align:center;]
+videoplay::assets/spheres_collision_box_displace.mp4[width:100%; max-width:500px]
+::
+
+{% endblock %}
