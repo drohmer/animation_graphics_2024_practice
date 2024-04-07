@@ -18,9 +18,7 @@ python generate.py
 
 _Slides are generated in \_site/ directory_
 
-<p align="center"> 
-<img align="center" src="assets/example.jpg" width="60%">
-</p>
+
 
 
 
