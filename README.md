@@ -1,10 +1,13 @@
-# INF585 Computer Animation - Lab Class Description
+# Animation in Graphics Practice - Training Days 2024
+
+Source code of the website for the practical exercise of the [Training Days of Animation in Graphics](https://imagecomputing.net/course/2024_gdr_igrv/) 2024.
+
 
 
 ## Download
 
 ```
-git clone --recursive https://github.com/drohmer/inf585_lab_class
+git clone --recursive https://github.com/drohmer/animation_graphics_2024_practice.git
 ```
 
 ## Run
@@ -20,13 +23,5 @@ _Slides are generated in \_site/ directory_
 </p>
 
 
-## Links
 
-* [INF585 Lab class](https://damienrohmer.com/data/teaching/2022_2023/x-inf585/practice/index.html) 
-
-* [INF585 Course Website](https://damienrohmer.com/data/teaching/2022_2023/x-inf585)
-
-* [INF585 Lab class code](https://github.com/drohmer/inf585_code)
-
-* [CGP Library](https://imagecomputing.net/cgp) [ [source](https://github.com/drohmer/cgp) ]
 
