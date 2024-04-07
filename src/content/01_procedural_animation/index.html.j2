@@ -1,0 +1,69 @@
+{% set pageTitle = 'Procedural Animation' %}
+{% set tocTitle = '1- Procedural Animation' %}
+
+{% extends "theme/template/base.html" %}
+
+
+
+{% block content %}
+
+= Procedural Animation - Cauldron
+
+::[color:gray;]
+__Path of the scene: [01_procedural/]__
+::
+::[height:25px;]::
+
+This code display a scene in loading some external .obj meshes: A cauldron and a spoon
+* __Note: The meshes files are stored in the directory assets/. This directory should be accessible from the place where your executable is run.__
+
+::[height:25px;]::
+
+A set of particles (one displayed as sphere, and the other using a semi-transparent textured mapped onto a quad) are emited regularily. <br>
+
+::nl
+
+The goal of this exercise is to modify the code to model a scene similar to the following one.
+
+::[text-align:center]
+videoplay::assets/cauldron.mp4[width:100%; max-width:550px]
+<br>
+[link::web/index.html[Interactive view]]
+::
+
+
+== Bubbles
+
+The particles structures, creation and position update are in the files `particles/particles.hpp/cpp`. The constructor already creates the bubbles at their expected position.
+
+::nl
+
+* - Update the function `particle_bubble::evaluate_position()` to set the motion of the bubbles.
+
+== Smoke billboards
+
+The smoke behavior is obtained using billboards with the semi-transparent smoke texture. To get the expected behavior, you should
+
+* 1) Set the constructor `particle_billboard::particle_billboard()` to set the correct initial position of the billboards.
+* 2) Update the function `particle_billboard::evaluate_position()` to set the correct trajectory of the billboards.
+* 3) Update in the file `scene.cpp` the function `scene_structure::display_billboard()` in order to the the billboards facing the camera, and with varying transparency along time.
+
+
+== Liquid surface
+
+
+The liquid surface is modeled by a grid trimmed to fit a circle.
+The liquid surface is associated to a dedicated shader in `shaders/water`.
+
+The animation of the liquid can be made in modifying the associated vertex shader `shaders/water/water.vert.glsl`.
+
+* - A uniform `time` parameter is passed to the shader and can be used to modify the position of the vertices of the grid.
+* - A 2D and 3D simplex noise `snoise` is available in the shader.
+* - The animation of the surface can be obtained by modifying the function `float deformation(float x, float z, float t)` in the shader.
+** __The surface is defined as \(S(x,z)=(x,\text{deformation}(x,z,t),z)\).__
+
+
+
+
+
+{% endblock %}
